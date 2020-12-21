@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+  <app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
+  <app-editform-worker (editWorker)="onEditWorker($event)"></app-editform-worker>
+  <h2>Поиск сотрудников</h2>
+  <div class="row">
+    <input type="text" class="col-2 form-control mb-3 ml-3 mt-2" placeholder="Имя" [(ngModel)]="searchName" />
+    <input type="text" class="col-2 form-control mb-3 ml-3 mt-2" placeholder="Фамилия" [(ngModel)]="searchSurname" />
+  </div>
+  <app-table-workers [title]=" 'Программисты' " [workers]="getByType(myWorkerType.programmer)|filterbyname:searchName|filterbysurname:searchSurname " (deleteWorker)="onDeleteById($event) "></app-table-workers>
+  <app-table-workers [title]=" 'Дизайнеры' " [workers]="getByType(myWorkerType.designer)|filterbyname:searchName|filterbysurname:searchSurname " (deleteWorker)="onDeleteById($event) "></app-table-workers>
+  <app-table-workers [title]=" 'Рекламщики' " [workers]="getByType(myWorkerType.copywriter)|filterbyname:searchName|filterbysurname:searchSurname" (deleteWorker)="onDeleteById($event) "></app-table-workers>
+  <app-table-workers [title]=" 'Менеджеры' " [workers]="getByType(myWorkerType.manager)|filterbyname:searchName|filterbysurname:searchSurname" (deleteWorker)="onDeleteById($event) "></app-table-workers>
+</div>

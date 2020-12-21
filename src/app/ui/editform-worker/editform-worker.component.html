@@ -1,0 +1,55 @@
+<div class="row mb-3">
+  <div class="col-12">
+    <h5>Редактировать запись</h5>
+  </div>
+  <form [formGroup]="workerForm">
+    <div class="col-12 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="id"
+        formControlName="id"
+        [(ngModel)]="id"
+      />
+    </div>
+    <div class="col-12 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Имя"
+        formControlName="name"
+        [(ngModel)]="name"
+      />
+    </div>
+    <div class="col-12 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Фамилия"
+        formControlName="surname"
+        [(ngModel)]="surname"
+      />
+    </div>
+    <div class="col-12 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Телефон"
+        formControlName="phone"
+        [textMask]="{mask:mask}"
+        [(ngModel)]="phone"
+      />
+    </div>
+    <div class="col-12 mt-2">
+      <select class="custom-select" [(ngModel)]="type" formControlName="type">
+        <option [ngValue]="myWorkerType.programmer">Программист</option>
+        <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+        <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+        <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      </select>
+    </div>
+    <div class="col-12 mt-1">
+      <button class="btn btn-warning btn-sm" (click)="onEditWorker()" [disabled]="workerForm.invalid">Редактировать</button>
+    </div>
+  </form>
+</div>
